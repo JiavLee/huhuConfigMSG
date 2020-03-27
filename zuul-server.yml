@@ -36,16 +36,3 @@ zuul:
         OkToRetryOnAllOperations: false
         ConnectTimeout: 10000
         ReadTimeout: 10000
-
-    seckill-server-route:
-      path: /member/**
-      service-id: seckill-server
-      sensitive-headers:
-      custom-sensitive-headers: true
-      ribbon:
-        eager-load:
-          enabled: true
-        MaxAutoRetriesNextServer: 0
-        OkToRetryOnAllOperations: false
-        ConnectTimeout: 10000
-        ReadTimeout: 10000
