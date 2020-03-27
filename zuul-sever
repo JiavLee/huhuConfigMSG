@@ -1,0 +1,51 @@
+server:
+  port: 9000
+ribbon: 
+  ReadTimeout: 5000
+  SocketTimeout: 5000
+feign:
+  hystrix:
+    enabled: true
+zuul:
+  SendErrorFilter: 
+    error: 
+      disable: true
+  ratelimit:
+    key-prefix: ratelimit
+    enabled: true
+    repository: REDIS
+    behind-proxy: true
+    add-response-headers: true
+    default-policy-list: #optional - will apply unless specific policy exists
+      - limit: 10 #optional - request number limit per refresh interval window
+        refresh-interval: 60 #default value (in seconds)
+        type: #optional
+          - origin
+  forceOriginalQueryStringEncoding: true #强制采用原始请求的编码格式，即不对Get请求参数做编解码
+  ignored-patterns: /*-server/** #忽略匹配这个格式的路径
+  routes:
+    member-server-route:
+      path: /member/**
+      service-id: member-server
+      sensitive-headers:
+      custom-sensitive-headers: true
+      ribbon:
+        eager-load:
+          enabled: true
+        MaxAutoRetriesNextServer: 0
+        OkToRetryOnAllOperations: false
+        ConnectTimeout: 10000
+        ReadTimeout: 10000
+
+    seckill-server-route:
+      path: /member/**
+      service-id: seckill-server
+      sensitive-headers:
+      custom-sensitive-headers: true
+      ribbon:
+        eager-load:
+          enabled: true
+        MaxAutoRetriesNextServer: 0
+        OkToRetryOnAllOperations: false
+        ConnectTimeout: 10000
+        ReadTimeout: 10000
