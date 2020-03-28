@@ -1,15 +1,16 @@
 server:
   port: 8111
-redis:
-  port: 6379
-  poolMaxTotal: 500
-  poolMaxWait: 500
-  password: admin
-  host: localhost
-  poolMaxIdle: 500
-  timeout: 500
-    jedis:
-      pool:
-        max-active: 100
-        max-idle: 20
-        min-idle: 5
+spring:
+  redis:
+    port: 6379
+    poolMaxTotal: 500
+    poolMaxWait: 500
+    password: admin
+    host: localhost
+    poolMaxIdle: 500
+    timeout: 500
+      jedis:
+        pool:
+          max-active: 100
+          max-idle: 20
+          min-idle: 5
