@@ -1,4 +1,4 @@
-server: 
+server:
   poet: 8111
 redis:
   port: 6379
@@ -8,3 +8,8 @@ redis:
   host: localhost
   poolMaxIdle: 500
   timeout: 500
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 20
+        min-idle: 5
