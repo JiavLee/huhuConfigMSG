@@ -3,6 +3,6 @@ redis:
   poolMaxTotal: 500
   poolMaxWait: 500
   password: admin
-  host: 129.204.188.66
+  host: localhost
   poolMaxIdle: 500
   timeout: 500
